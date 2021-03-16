@@ -1,6 +1,7 @@
 package com.qa.todolist.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.qa.todolist.data.repository.TaskRepository;
 import com.qa.todolist.mappers.TaskMapper;
