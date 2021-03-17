@@ -1,5 +1,8 @@
 package com.qa.todolist.mappers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,7 +26,13 @@ public class TaskMapper {
 		return this.modelMapper.map(task, TaskDTO.class);
 	}
 	
-	public Task mapToDuck(TaskDTO taskDTO) {
+	public Task mapToTask(TaskDTO taskDTO) {
 		return this.modelMapper.map(taskDTO, Task.class);
+	}
+	
+	public List<TaskDTO> mapToTaskDTOFromList(List<Task> tasks){
+		List<TaskDTO> taskDTOs = new ArrayList<TaskDTO>();
+		tasks.stream().forEach((t) -> taskDTOs.add(mapToDTO(t)));
+		return taskDTOs;
 	}
 }
