@@ -64,7 +64,8 @@ public class TaskController {
 	//add tasks
 	@PostMapping
 	public ResponseEntity<TaskDTO> addTask(@RequestBody Task task){
-		return null;
+		TaskDTO taskAdded = taskService.addTask(task);
+		return new ResponseEntity<TaskDTO>(taskAdded, HttpStatus.OK);
 	}
 	
 	//morgan added HATEOAS to the system from here look at how it works

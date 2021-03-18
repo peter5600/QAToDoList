@@ -75,5 +75,10 @@ public class TaskService {
 		return updatedTask.getTaskCompleted();
 	}
 
+	public TaskDTO addTask(Task task) {
+		Task savedTask = taskRepo.save(task);
+		return taskMapper.mapToDTO(savedTask);
+	}
+
 	
 }
