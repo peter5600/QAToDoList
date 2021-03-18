@@ -36,7 +36,7 @@ public class TaskController {
 	}
 	
 	//view tasks
-	@GetMapping("/tasks/{id}")
+	@GetMapping("/{id}")//list id
 	public ResponseEntity<List<TaskDTO>> getTaskByListID(@PathVariable("id") Integer id){
 		List<TaskDTO> TasksFromList = taskService.returnAllTasksFromListByID(id);
 		return new ResponseEntity<List<TaskDTO>>(TasksFromList, HttpStatus.OK);
@@ -46,9 +46,16 @@ public class TaskController {
 	//modify tasks
 	@PatchMapping("/{id}")
 	public ResponseEntity<TaskDTO> modifyTaskByID(@PathVariable("id") Integer id, @Valid @RequestBody Task task){
-		return null;
+		TaskDTO modifiedTask = taskService.modifyTask(id, task);
+		return new ResponseEntity<TaskDTO>(modifiedTask, HttpStatus.OK);
 	}
 	
+	//completed
+	@PatchMapping("/{id}/completed")
+	public ResponseEntity<Boolean> completedTaskByID(@PathVariable("id") Integer id){
+		Boolean Completed = taskService.completeTask(id);
+		return new ResponseEntity<Boolean>(Completed, HttpStatus.OK);
+	}
 	//delete tasks
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Boolean> deleteTaskById(@PathVariable("id") Integer id){
