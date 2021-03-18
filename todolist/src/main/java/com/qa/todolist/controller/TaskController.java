@@ -53,14 +53,15 @@ public class TaskController {
 	//completed
 	@PatchMapping("/{id}/completed")
 	public ResponseEntity<Boolean> completedTaskByID(@PathVariable("id") Integer id){
-		Boolean Completed = taskService.completeTask(id);
-		return new ResponseEntity<Boolean>(Completed, HttpStatus.OK);
+		Boolean completed = taskService.completeTask(id);
+		return new ResponseEntity<Boolean>(completed, HttpStatus.OK);
 	}
 	//delete tasks
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Boolean> deleteTaskById(@PathVariable("id") Integer id){
-		return null;
-	}
+		Boolean deleted = taskService.deleteTask(id);
+		return new ResponseEntity<Boolean>(deleted, HttpStatus.OK);
+	};
 	//add tasks
 	@PostMapping
 	public ResponseEntity<TaskDTO> addTask(@RequestBody Task task){
