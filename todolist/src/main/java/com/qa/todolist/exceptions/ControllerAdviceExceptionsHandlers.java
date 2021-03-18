@@ -25,7 +25,12 @@ public class ControllerAdviceExceptionsHandlers {
 	}
 	
 	@ExceptionHandler(value = ListNotFoundException.class)
-	public ResponseEntity<String> ListNotFoundException(ListNotFoundException lntf){
-		return new ResponseEntity<String>(lntf.getMessage(), HttpStatus.NOT_FOUND);
+	public ResponseEntity<String> ListNotFoundException(ListNotFoundException lnf){
+		return new ResponseEntity<String>(lnf.getMessage(), HttpStatus.NOT_FOUND);
+	}
+	
+	@ExceptionHandler(value = TaskNotFoundException.class)
+	public ResponseEntity<String> TaskNotFoundException(TaskNotFoundException tnf){
+		return new ResponseEntity<String>(tnf.getMessage(), HttpStatus.NOT_FOUND);
 	}
 }
