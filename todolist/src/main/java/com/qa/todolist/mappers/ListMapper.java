@@ -5,11 +5,12 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.qa.todolist.data.model.Lists;
 import com.qa.todolist.dto.ListDTO;
 
-
+@Component
 public class ListMapper {
 
 private ModelMapper modelMapper;

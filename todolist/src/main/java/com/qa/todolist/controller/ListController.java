@@ -44,7 +44,7 @@ private ListService listService;
 	
 	//modify tasks
 	@PatchMapping("/{id}")
-	public ResponseEntity<TaskDTO> modifyListByID(@PathVariable("id") Integer id, @Valid @RequestBody Lists list){
+	public ResponseEntity<ListDTO> modifyListByID(@PathVariable("id") Integer id, @Valid @RequestBody Lists list){
 		return null;
 	}
 	
@@ -55,7 +55,9 @@ private ListService listService;
 	}
 	//add tasks
 	@PostMapping
-	public ResponseEntity<TaskDTO> addList(@RequestBody Lists list){
-		return null;
+	public ResponseEntity<ListDTO> addList(@RequestBody Lists list){
+		System.out.println("---- list:" +list.toString());
+		ListDTO addedList = listService.addList(list);
+		return new ResponseEntity<ListDTO>(addedList, HttpStatus.CREATED);
 	}
 }
