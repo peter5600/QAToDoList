@@ -20,7 +20,7 @@ public class Lists {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "list_id")
-	private Long id;
+	private Integer id;
 	
 	@NotNull
 	@Column(name = "list_name", length = 30)
@@ -31,11 +31,11 @@ public class Lists {
 	@DateTimeFormat(pattern = "dd-MM-yyyy HH:mm")
 	private String createdAt;//might have issues with this it might need to be a DateTime type 
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -55,7 +55,7 @@ public class Lists {
 		this.createdAt = createdAt;
 	}
 
-	public Lists(Long id, @NotNull String listName, String createdAt) {
+	public Lists(Integer id, @NotNull String listName, String createdAt) {
 		super();
 		this.id = id;
 		this.listName = listName;
