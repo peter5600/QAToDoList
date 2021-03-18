@@ -36,10 +36,17 @@ private ListService listService;
 		this.listService = listService;
 	}
 	
-	@GetMapping("/lists/{id}")
-	public ResponseEntity<List<ListDTO>> getListByListID(@PathVariable("id") Integer id){
-		return null;
+	@GetMapping("/{id}")
+	public ResponseEntity<ListDTO> getListByListID(@PathVariable("id") Integer id){
+		ListDTO returnedList = listService.getListByID(id);
+		return new ResponseEntity<ListDTO>(returnedList, HttpStatus.FOUND);//return 302 found
 		
+	}
+	
+	@GetMapping//this is just /list
+	public ResponseEntity<List<ListDTO>> getListOfLists(){
+		List<ListDTO> returnedLists = listService.getAllLists();
+		return new ResponseEntity<List<ListDTO>>(returnedLists, HttpStatus.OK);
 	}
 	
 	//modify tasks
@@ -56,7 +63,6 @@ private ListService listService;
 	//add tasks
 	@PostMapping
 	public ResponseEntity<ListDTO> addList(@RequestBody Lists list){
-		System.out.println("---- list:" +list.toString());
 		ListDTO addedList = listService.addList(list);
 		return new ResponseEntity<ListDTO>(addedList, HttpStatus.CREATED);
 	}
