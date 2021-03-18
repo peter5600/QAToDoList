@@ -52,7 +52,8 @@ private ListService listService;
 	//modify tasks
 	@PatchMapping("/{id}")
 	public ResponseEntity<ListDTO> modifyListByID(@PathVariable("id") Integer id, @Valid @RequestBody Lists list){
-		return null;
+		ListDTO modifiedList = listService.modifyList(id, list);
+		return new ResponseEntity<ListDTO>(modifiedList, HttpStatus.OK);
 	}
 	
 	//delete tasks

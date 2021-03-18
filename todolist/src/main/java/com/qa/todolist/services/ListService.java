@@ -3,6 +3,8 @@ package com.qa.todolist.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,6 +57,24 @@ public class ListService {
 			listRepo.deleteById(id);//built in function dosent return anything
 			//shouldn't have to delete tasks spring should do for me
 			return !listRepo.existsById(id);
+			
+		}
+
+		public ListDTO modifyList(Integer id, @Valid Lists list) {
+			Optional<Lists> optionalList = listRepo.findById(id);
+			Lists foundList;
+			if(!optionalList.isPresent()) {
+				throw new ListNotFoundException("The list couldn't be found using ID: " + id);
+			}else {
+				foundList = optionalList.get();
+			}
+			
+			foundList.setListName(list.getListName());
+			//cant change id or created at
+			Lists updatedList = listRepo.save(foundList);
+			
+			return listMapper.mapToDTO(updatedList);
+			
 			
 		}
 		
