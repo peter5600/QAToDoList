@@ -58,7 +58,8 @@ private ListService listService;
 	//delete tasks
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Boolean> deleteListById(@PathVariable("id") Integer id){
-		return null;
+		Boolean wasDeleted = listService.DeleteListById(id);
+		return new ResponseEntity<Boolean>(wasDeleted, HttpStatus.FOUND);
 	}
 	//add tasks
 	@PostMapping

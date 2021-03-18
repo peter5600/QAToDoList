@@ -46,6 +46,17 @@ public class ListService {
 			List<Lists> lists = listRepo.findAll();
 			return listMapper.mapToListDTOFromList(lists);//my own mapper that converts lists for me
 		}
+
+		public Boolean DeleteListById(Integer id) {
+			if(!listRepo.existsById(id)) {
+				//if dosent exist
+				throw new ListNotFoundException("The list couldnt be found using ID: " + id);
+			}
+			listRepo.deleteById(id);//built in function dosent return anything
+			//shouldn't have to delete tasks spring should do for me
+			return !listRepo.existsById(id);
+			
+		}
 		
 		
 }
