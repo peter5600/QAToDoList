@@ -3,8 +3,9 @@ package com.qa.todolist.configuration;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
-
+@Configuration//specifies this is a config class and should be run as soon as the application starts
 public class ApplicationConfiguration {
 
 	@Bean
