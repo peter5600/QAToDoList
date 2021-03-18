@@ -20,7 +20,7 @@ public class Task {
 	@Id//set to AI
 	@GeneratedValue(strategy = GenerationType.IDENTITY)//this is a primary key
 	@Column(name = "task_id")//set name to task_id
-	private Long id;
+	private Integer id;
 	
 	//Instead of an ID like in the ERD i will implement the same but with spring functionality so instead of ID
 	//that i fetch ill replace that with an object
@@ -64,7 +64,7 @@ public class Task {
 
 
 
-	public Task(Long id, Lists list, @NotNull String task, @NotNull Boolean taskCompleted, @NotNull String createdAt) {
+	public Task(Integer id, Lists list, @NotNull String task, @NotNull Boolean taskCompleted, @NotNull String createdAt) {
 		super();
 		this.id = id;
 		this.list = list;
@@ -75,13 +75,13 @@ public class Task {
 
 
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
 
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
