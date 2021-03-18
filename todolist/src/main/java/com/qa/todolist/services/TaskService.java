@@ -74,6 +74,15 @@ public class TaskService {
 		Task updatedTask = taskRepo.save(foundTask);
 		return updatedTask.getTaskCompleted();
 	}
+	
+	public Boolean deleteTask(Integer id) {
+		if(!taskRepo.existsById(id)) {
+			throw new TaskNotFoundException("Task id: " + id + " wasn't found");
+		}else {
+			taskRepo.deleteById(id);
+		}
+		return !taskRepo.existsById(id);
+	}
 
 	public TaskDTO addTask(Task task) {
 		Task savedTask = taskRepo.save(task);
