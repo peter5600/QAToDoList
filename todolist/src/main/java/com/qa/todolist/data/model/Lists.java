@@ -74,6 +74,10 @@ public class Lists {
 		this.createdAt = createdAt;
 	}
 	
+	public Lists(Integer id) {
+		this.id = id;
+	}
+	
 
 	public Lists(){
 		super();

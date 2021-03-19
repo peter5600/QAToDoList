@@ -1,5 +1,8 @@
 package com.qa.todolist.data.model;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -39,9 +42,8 @@ public class Task {
 	@Column(name = "task_completed")
 	private Boolean taskCompleted;
 	
-	@NotNull
 	@Column(name = "created_at")
-	@DateTimeFormat(pattern = "dd-MM-yyyy HH::mm")
+	@DateTimeFormat(pattern = "dd-MM-yyyy HH:mm")
 	private String createdAt;//might have issues with this it might need to be a DateTime type 
 
 	
@@ -49,7 +51,9 @@ public class Task {
 	//Add getters, setters, constructors, equals, toString and hashcode
 	
 	public Task() {
-		
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyy HH:mm");  
+		LocalDateTime now = LocalDateTime.now(); 
+		setCreatedAt(dtf.format(now));//set created at myself
 	}
 
 
