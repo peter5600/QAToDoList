@@ -83,6 +83,11 @@ public class TaskService {
 		}
 		return !taskRepo.existsById(id);
 	}
+	
+	public TaskDTO addTask(Task task) {
+		Task savedTask = taskRepo.save(task);
+		return taskMapper.mapToDTO(savedTask);
+	}
 
 	
 }
