@@ -1,10 +1,13 @@
 package com.qa.todolist.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -54,15 +57,26 @@ public class TaskServiceUnitTest {
 	public void returnAllTasksTest() {
 		tasks.add(validTask);
 		taskDTOs.add(validTaskDTO);
-		//taskService.
+		taskService.addTask(validTask);
 		when(taskRepo.findAllTasksFromListID(Mockito.anyInt())).thenReturn(tasks);
 		when(taskMapper.mapToTaskDTOFromList(tasks)).thenReturn(taskDTOs);
 		
 		assertThat(taskDTOs).isEqualTo(taskService.returnAllTasksFromListByID(1));
+		
+		verify(taskRepo, times(1)).findAllTasksFromListID(Mockito.anyInt());
+		verify(taskMapper, times(1)).mapToTaskDTOFromList(tasks);
 	}
 	
 	@Test 
 	public void modifyTaskTest() {
+		when(taskRepo.findById(Mockito.anyInt())).thenReturn(Optional.of(validTask));
+		when(taskRepo.save(Mockito.any(Task.class))).thenReturn(validTask);
+		when(taskMapper.mapToDTO(Mockito.any(Task.class))).thenReturn(validTaskDTO);
+		
+		taskService.addTask(validTask);
+		assertThat(validTaskDTO).isEqualTo(taskService.modifyTask(1, validTask));
+		
+		verify(taskRepo, times(1)).findById(Mockito.anyInt());
 		
 	}
 	
