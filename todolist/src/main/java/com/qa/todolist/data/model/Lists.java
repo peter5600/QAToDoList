@@ -81,8 +81,19 @@ public class Lists {
 		LocalDateTime now = LocalDateTime.now(); 
 		setCreatedAt(dtf.format(now));//set created at myself
 	}
+	
+	public Lists(@NotNull String listName) {
+		this();
+		this.setListName(listName);
+	}
+	
+	public Lists(Integer id, @NotNull String listName) {
+		this();
+		this.id = id;
+		this.setListName(listName);
+	}
 
-	@Override
+	/*@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -117,7 +128,7 @@ public class Lists {
 		} else if (!listName.equals(other.listName))
 			return false;
 		return true;
-	}
+	}*/
 
 	@Override
 	public String toString() {

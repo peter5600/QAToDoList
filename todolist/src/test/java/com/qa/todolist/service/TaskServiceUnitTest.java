@@ -1,6 +1,7 @@
 package com.qa.todolist.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -21,6 +22,7 @@ import com.qa.todolist.data.model.Lists;
 import com.qa.todolist.data.model.Task;
 import com.qa.todolist.data.repository.TaskRepository;
 import com.qa.todolist.dto.TaskDTO;
+import com.qa.todolist.exceptions.TaskNotFoundException;
 import com.qa.todolist.mappers.TaskMapper;
 import com.qa.todolist.services.TaskService;
 
@@ -99,4 +101,5 @@ public class TaskServiceUnitTest {
 		
 		verify(taskRepo, times(2)).existsById(Mockito.anyInt());
 	}
+	
 }

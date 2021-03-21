@@ -3,6 +3,7 @@ package com.qa.todolist.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -111,14 +112,23 @@ public class ListControllerIntegrationTest {
 				MockMvcRequestBuilders.request(HttpMethod.DELETE, "/list/1");
 		mockRequest.accept(MediaType.APPLICATION_JSON);
 		ResultMatcher statusMatcher = MockMvcResultMatchers.status().isFound();
-		ResultMatcher contentMatcher = MockMvcResultMatchers.content()
-				.json(objectMapper.writeValueAsString(true));//need to return bool this should return a string bool true
+		ResultMatcher contentMatcher = MockMvcResultMatchers.content().string("true");//need to return bool this should return a string bool true
 		mvc.perform(mockRequest).andExpect(statusMatcher).andExpect(contentMatcher);
-		//causes an error if i skip ill still have 80%+
 	}
 	
 	@Test
-	public void addListTest() {
-		
+	public void addListTest() throws Exception {
+		Lists newValidList = new Lists(2,"Peters list");//im not going to know the id but the system needs it for the test
+		//even though i wont know the id it will be generated so for this test im passing but in reality i wouldnt pass the id
+		ListDTO newValidListDTO = listMapper.mapToDTO(newValidList);
+		MockHttpServletRequestBuilder mockRequest = 
+				MockMvcRequestBuilders.request(HttpMethod.POST, "/list");
+		mockRequest.accept(MediaType.APPLICATION_JSON);
+		mockRequest.contentType(MediaType.APPLICATION_JSON);//set the data im sending to json
+		mockRequest.content(objectMapper.writeValueAsString(newValidList));//write the data as a string this will be sent to the db
+		ResultMatcher statusMatcher = MockMvcResultMatchers.status().isCreated();
+		ResultMatcher contentMatcher = MockMvcResultMatchers.content()
+				.json(objectMapper.writeValueAsString(newValidListDTO));
+		mvc.perform(mockRequest).andExpect(statusMatcher).andExpect(contentMatcher);
 	}
 }

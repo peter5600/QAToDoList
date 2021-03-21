@@ -135,7 +135,7 @@ public class Task {
 
 
 
-	@Override
+	/*@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -192,6 +192,6 @@ public class Task {
 	public String toString() {
 		return "Task [id=" + id + ", list=" + list + ", task=" + task + ", taskCompleted=" + taskCompleted
 				+ ", createdAt=" + createdAt + "]";
-	}
+	}*/
 	
 }

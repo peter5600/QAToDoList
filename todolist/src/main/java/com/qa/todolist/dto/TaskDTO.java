@@ -64,7 +64,7 @@ public class TaskDTO {
 		this.createdAt = createdAt;
 	}
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "TaskDTO [id=" + id + ", task=" + task + ", taskCompleted=" + taskCompleted + ", createdAt=" + createdAt
 				+ "]";
@@ -79,7 +79,7 @@ public class TaskDTO {
 		result = prime * result + ((task == null) ? 0 : task.hashCode());
 		result = prime * result + ((taskCompleted == null) ? 0 : taskCompleted.hashCode());
 		return result;
-	}
+	}*/
 
 	@Override
 	public boolean equals(Object obj) {
