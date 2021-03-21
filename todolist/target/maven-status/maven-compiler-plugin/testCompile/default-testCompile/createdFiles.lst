@@ -1,0 +1,9 @@
+com\qa\todolist\controller\ListControllerIntegrationTest.class
+com\qa\todolist\controller\TaskControllerIntegrationTest.class
+com\qa\todolist\service\TaskServiceIntegrationTest.class
+com\qa\todolist\controller\TaskControllerUnitTest.class
+com\qa\todolist\TodolistApplicationTests.class
+com\qa\todolist\service\ListServiceIntegrationTest.class
+com\qa\todolist\service\TaskServiceUnitTest.class
+com\qa\todolist\controller\ListControllerUnitTest.class
+com\qa\todolist\service\ListServiceUnitTest.class

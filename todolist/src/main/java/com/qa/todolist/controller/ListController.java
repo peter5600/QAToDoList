@@ -64,7 +64,7 @@ private ListService listService;
 	}
 	//add tasks
 	@PostMapping
-	public ResponseEntity<ListDTO> addList(@RequestBody Lists list){
+	public ResponseEntity<ListDTO> addList(@Valid @RequestBody Lists list){
 		ListDTO addedList = listService.addList(list);
 		return new ResponseEntity<ListDTO>(addedList, HttpStatus.CREATED);
 	}

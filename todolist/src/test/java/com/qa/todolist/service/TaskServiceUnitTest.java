@@ -50,7 +50,7 @@ public class TaskServiceUnitTest {
 		taskDTOs = new ArrayList<TaskDTO>();
 		
 		validTask = new Task(1, new Lists(1,"Peters list","19-03-2021 09:58"),"Complete Unit tests", false,"19-03-2021 09:59");
-		validTaskDTO = new TaskDTO(1l,"Complete Unit tests", false,"19-03-2021 09:59");
+		validTaskDTO = new TaskDTO(1,"Complete Unit tests", false,"19-03-2021 09:59");
 	}
 	
 	@Test
@@ -73,20 +73,30 @@ public class TaskServiceUnitTest {
 		when(taskRepo.save(Mockito.any(Task.class))).thenReturn(validTask);
 		when(taskMapper.mapToDTO(Mockito.any(Task.class))).thenReturn(validTaskDTO);
 		
-		taskService.addTask(validTask);
 		assertThat(validTaskDTO).isEqualTo(taskService.modifyTask(1, validTask));
 		
 		verify(taskRepo, times(1)).findById(Mockito.anyInt());
-		
+		verify(taskRepo,times(1)).save(Mockito.any(Task.class));
+		verify(taskMapper, times(1)).mapToDTO(Mockito.any(Task.class));
 	}
 	
 	@Test
 	public void completeTaskTest() {
+		when(taskRepo.findById(Mockito.anyInt())).thenReturn(Optional.of(validTask));
+		when(taskRepo.save(Mockito.any(Task.class))).thenReturn(validTask);
 		
+		assertThat(true).isEqualTo(taskService.completeTask(1));
+		
+		verify(taskRepo, times(1)).findById(Mockito.anyInt());
+		verify(taskRepo,times(1)).save(Mockito.any(Task.class));
 	}
 	
 	@Test
 	public void deleteTaskTest() {
+		when(taskRepo.existsById(Mockito.anyInt())).thenReturn(true, false);
 		
+		assertThat(true).isEqualTo(taskService.deleteTask(1));
+		
+		verify(taskRepo, times(2)).existsById(Mockito.anyInt());
 	}
 }

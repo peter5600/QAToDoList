@@ -20,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
-@Table(name = "list")
+@Table(name = "tbList")
 public class Lists {
 
 	@Id
@@ -38,7 +38,7 @@ public class Lists {
 	private String createdAt;//might have issues with this it might need to be a DateTime type 
 	
 	@OneToMany(mappedBy = "list", fetch = FetchType.LAZY, orphanRemoval = true)
-	//mapped by is equal to the name of the table
+	//mapped by is the field that owns the relationship so in task the field is called list
 	@OnDelete(action = OnDeleteAction.CASCADE)//when a list is deleted it will also remove the tasks associated with it
 	private List<Task> tasks;
 	

@@ -50,7 +50,7 @@ public class ListServiceUnitTest {
 		listDTOs = new ArrayList<ListDTO>();
 		
 		validList = new Lists(1, "Peters list","19-03-2021 09:59");
-		validListDTO = new ListDTO(1l, "Peters list", "19-03-2021 09:59");
+		validListDTO = new ListDTO(1, "Peters list", "19-03-2021 09:59");
 		
 		
 	}
@@ -90,7 +90,7 @@ public class ListServiceUnitTest {
 	}
 	@Test
 	public void deleteListByIDTest() {
-		listService.addList(validList);
+		//listService.addList(validList);
 		System.out.println(validList.toString());
 		when(listRepo.existsById(1)).thenReturn(true,false);
 		//must call the whens togther otherwise it causes an issue

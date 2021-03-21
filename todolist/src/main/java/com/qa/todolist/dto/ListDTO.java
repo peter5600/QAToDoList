@@ -2,7 +2,7 @@ package com.qa.todolist.dto;
 
 public class ListDTO {
 
-	private Long id;
+	private Integer id;
 	
 	private String listName;
 	
@@ -12,18 +12,18 @@ public class ListDTO {
 		super();
 	}
 	
-	public ListDTO(Long id, String listName, String createdAt) {
+	public ListDTO(Integer id, String listName, String createdAt) {
 		super();
 		this.id = id;
 		this.listName = listName;
 		this.createdAt = createdAt;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
