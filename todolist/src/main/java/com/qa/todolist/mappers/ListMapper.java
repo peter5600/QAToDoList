@@ -24,9 +24,9 @@ private ModelMapper modelMapper;
 		return this.modelMapper.map(list, ListDTO.class);
 	}
 	
-	public Lists mapToList(ListDTO listDTO) {
+	/*public Lists mapToList(ListDTO listDTO) {
 		return this.modelMapper.map(listDTO, Lists.class);
-	}
+	}*/ // dont need to map to list
 	
 	public List<ListDTO> mapToListDTOFromList(List<Lists> list){
 		List<ListDTO> lists = new ArrayList<ListDTO>();

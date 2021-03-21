@@ -26,9 +26,9 @@ public class TaskMapper {
 		return this.modelMapper.map(task, TaskDTO.class);
 	}
 	
-	public Task mapToTask(TaskDTO taskDTO) {
+	/*public Task mapToTask(TaskDTO taskDTO) {
 		return this.modelMapper.map(taskDTO, Task.class);
-	}
+	}*/ //never had to use this
 	
 	public List<TaskDTO> mapToTaskDTOFromList(List<Task> tasks){
 		List<TaskDTO> taskDTOs = new ArrayList<TaskDTO>();
