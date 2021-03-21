@@ -64,7 +64,7 @@ public class TaskController {
 	};
 	//add tasks
 	@PostMapping
-	public ResponseEntity<TaskDTO> addTask(@RequestBody Task task){
+	public ResponseEntity<TaskDTO> addTask(@Valid @RequestBody Task task){
 		TaskDTO taskAdded = taskService.addTask(task);
 		return new ResponseEntity<TaskDTO>(taskAdded, HttpStatus.OK);
 	}

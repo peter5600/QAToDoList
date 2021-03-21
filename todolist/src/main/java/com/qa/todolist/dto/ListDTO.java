@@ -2,7 +2,7 @@ package com.qa.todolist.dto;
 
 public class ListDTO {
 
-	private Long id;
+	private Integer id;
 	
 	private String listName;
 	
@@ -12,18 +12,19 @@ public class ListDTO {
 		super();
 	}
 	
-	public ListDTO(Long id, String listName, String createdAt) {
+	public ListDTO(Integer id, String listName, String createdAt) {
 		super();
 		this.id = id;
 		this.listName = listName;
 		this.createdAt = createdAt;
 	}
+	
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -43,7 +44,8 @@ public class ListDTO {
 		this.createdAt = createdAt;
 	}
 
-	@Override
+
+	/*@Override
 	public String toString() {
 		return "ListDTO [id=" + id + ", listName=" + listName + ", createdAt=" + createdAt + "]";
 	}
@@ -56,7 +58,7 @@ public class ListDTO {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((listName == null) ? 0 : listName.hashCode());
 		return result;
-	}
+	}*/
 
 	@Override
 	public boolean equals(Object obj) {

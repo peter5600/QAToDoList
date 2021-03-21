@@ -5,7 +5,7 @@ package com.qa.todolist.dto;
 //so instead only return the task information
 public class TaskDTO {
 
-	private Long id;
+	private Integer id;
 	
 	private String task;
 	
@@ -24,7 +24,7 @@ public class TaskDTO {
 		this.createdAt = createdAt;
 	}
 	
-	public TaskDTO(Long id, String task, Boolean taskCompleted, String createdAt) {
+	public TaskDTO(Integer id, String task, Boolean taskCompleted, String createdAt) {
 		super();
 		this.id = id;
 		this.task = task;
@@ -32,11 +32,11 @@ public class TaskDTO {
 		this.createdAt = createdAt;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -64,7 +64,7 @@ public class TaskDTO {
 		this.createdAt = createdAt;
 	}
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "TaskDTO [id=" + id + ", task=" + task + ", taskCompleted=" + taskCompleted + ", createdAt=" + createdAt
 				+ "]";
@@ -79,7 +79,7 @@ public class TaskDTO {
 		result = prime * result + ((task == null) ? 0 : task.hashCode());
 		result = prime * result + ((taskCompleted == null) ? 0 : taskCompleted.hashCode());
 		return result;
-	}
+	}*/
 
 	@Override
 	public boolean equals(Object obj) {
