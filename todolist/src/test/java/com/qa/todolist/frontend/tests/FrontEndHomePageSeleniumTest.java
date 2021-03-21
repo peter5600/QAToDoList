@@ -65,7 +65,7 @@ public class FrontEndHomePageSeleniumTest {
 	
 	@Test
 	public void getListsTest() throws Exception {
-		test = extent.startTest("ExtentDemo");
+		test = extent.startTest("Get lists test");
 		new WebDriverWait(driver, 2).until(ExpectedConditions.presenceOfElementLocated(By.id("Lists")));
 		driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
 		//give 5 seconds to js to fetch the results from the api shouldn't take any longer
