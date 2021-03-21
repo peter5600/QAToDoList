@@ -33,7 +33,7 @@ public class FrontEndHomePageSeleniumTest {
 	private static ExtentTest test;
 	
 	//Get page
-	private HomePage HP = new HomePage();
+	private static HomePage HP;
 	
 	@BeforeEach
 	public void init() {
@@ -41,6 +41,7 @@ public class FrontEndHomePageSeleniumTest {
 		try {
 			System.out.println(HomePage.URL);
 			driver.get(HomePage.URL);
+			 HP = new HomePage(driver);
 		} catch (TimeoutException e) {
 			System.out.println("Page: " + HomePage.URL + " did not load within 30 seconds!");
 		}
@@ -60,7 +61,7 @@ public class FrontEndHomePageSeleniumTest {
         cOptions.setCapability("network.cookie.cookieBehavior", 2);
         cOptions.setCapability("profile.block_third_party_cookies", true);
         driver = new ChromeDriver(cOptions);
-        driver.manage().window().setSize(new Dimension(1366, 768));
+        driver.manage().window().setSize(new Dimension(1920, 1080));
 	}
 	
 	@Test
@@ -73,14 +74,25 @@ public class FrontEndHomePageSeleniumTest {
 		//screenshot
 		ScreenshotHelper.screenShot(driver, "src/test/resources/screenshots/LoadedLists.png");
 		
-		WebElement ListsBox = driver.findElement(By.id("Lists"));
-		int ChildCount = ListsBox.findElements(By.xpath("./child::*")).size();
+		int ChildCount = HP.GetLists();
 		//by default listsbox is empty if no lists are found then a h2 is placed inside saying no lists are found and if 
 		//lists are found then they are placed inside so to pass the contents must be greater than 1
 		assertThat(ChildCount).isGreaterThan(0);
 		
 		test.log(LogStatus.PASS, test.addScreenCapture(Paths.get("src/test/resources/screenshots/LoadedLists.png").toFile().getAbsolutePath()));
 		extent.endTest(test);
+	}
+	
+	@Test
+	public void addListTest() throws Exception {
+		test = extent.startTest("Add list test");
+
+		boolean addedList = HP.addList();
+		ScreenshotHelper.screenShot(driver, "src/test/resources/screenshots/NewListAdded.png");
+		assertThat(addedList).isEqualTo(true);
+		test.log(LogStatus.PASS, test.addScreenCapture(Paths.get("src/test/resources/screenshots/NewListAdded.png").toFile().getAbsolutePath()));
+		extent.endTest(test);
+		
 	}
 	
 	@AfterAll //runs once
