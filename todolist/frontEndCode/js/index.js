@@ -56,6 +56,7 @@ const GetLists = () => {
             })
             let DeleteBtn = InnerListComponent.querySelector(".DeleteList");
             DeleteBtn.addEventListener("click", function () {
+                console.log("Hello")
                 DeleteList(l.id)
             })
 
@@ -73,7 +74,20 @@ const DisplayTasks = (id) => {
 }
 
 const DeleteList = (id) => {
-
+    fetch("http://localhost:8080/list/" + id,{
+        method: "DELETE",
+        headers: {
+            "Content-type": "application/json"
+        }
+    }).then((response) => {
+        if(response.status === 302){
+            location.reload();
+        }else{
+            throw "Couldn't find the list to delete"
+        }
+    }).catch((err) => {
+        alert("There was an error when the list was being deleted " + err);
+    })
 }
 
 
