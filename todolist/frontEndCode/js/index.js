@@ -23,34 +23,8 @@ const CreateForm = (event) => {
         alert("There was a problem posting the data to the server. Please try again later. Thanks")
     })
 }
-var ListComponent;//This is the html from the list Component as a string global var
-(function () {
-    
-    //On page load
-    fetch("../Components/list.html", {
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        }
-    }).then((response) => {
-        console.log(response)
-        if(response.status === 200){
-            console.log("All good")
-            return response.text();
-        }else{
-            throw 'List Component could not be found';
-        }
-    }).then((data) => {
-        ListComponent = data;
-        console.log("List component is " + ListComponent)
-        GetLists()
-    }).catch((err) => {
-        alert("An error has occured" + err);
-    })
+var ListComponent; //This is the html from the list Component as a string global var
 
-   
-    
-})();
 
 const GetLists = () => {
     fetch("http://localhost:8080/list", {
@@ -77,11 +51,11 @@ const GetLists = () => {
             InnerListComponent.querySelector(".ListName").innerHTML = l.listName;
 
             let TasksBtn = InnerListComponent.querySelector(".ViewTasks");
-            TasksBtn.addEventListener("click",function(){
-                DisplayTasks(l.id);//probably a better way to do this but it functions for now
+            TasksBtn.addEventListener("click", function () {
+                DisplayTasks(l.id); //probably a better way to do this but it functions for now
             })
             let DeleteBtn = InnerListComponent.querySelector(".DeleteList");
-            DeleteBtn.addEventListener("click", function(){
+            DeleteBtn.addEventListener("click", function () {
                 DeleteList(l.id)
             })
 
@@ -95,9 +69,56 @@ const GetLists = () => {
 
 
 const DisplayTasks = (id) => {
-    
+
 }
 
 const DeleteList = (id) => {
-    
+
 }
+
+
+(function () {
+
+    //On page load
+    /*fetch("../Components/list.html", {
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    }).then((response) => {
+        console.log(response)
+        if(response.status === 200){
+            console.log("All good")
+            return response.text();
+        }else{
+            throw 'List Component could not be found';
+        }
+    }).then((data) => {
+        ListComponent = data;
+        console.log("List component is " + ListComponent)
+        GetLists()
+    }).catch((err) => {
+
+        alert("An error has occured when getting component the error is " + err);
+    })*/
+    ListComponent = `<div class="row List w-75 mx-auto" >
+    <div class="col-2 text-center">
+        <p class="ListName">List Name</p>
+    </div>
+    <div class="col-6"></div>
+    <div class="col-4">
+        <div class="row">
+            <div class="col-6">
+                <button class="btn btn-primary btn-lg ViewTasks">View tasks</button>
+            </div>
+            <div class="col-6">
+                <button class="btn btn-danger btn-lg DeleteList">Delete List</button>
+            </div>
+        </div>
+    </div>
+</div>`; //i did have a fetch system that grabs the file but this only works with the live server extension so unfotunatley this has been replaced
+    GetLists();
+
+
+
+})();
