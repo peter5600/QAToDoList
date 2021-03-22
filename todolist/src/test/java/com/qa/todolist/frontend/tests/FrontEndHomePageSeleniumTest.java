@@ -89,7 +89,7 @@ public class FrontEndHomePageSeleniumTest {
 
 		boolean addedList = HP.addList();
 		ScreenshotHelper.screenShot(driver, "src/test/resources/screenshots/NewListAdded.png");
-		assertThat(addedList).isEqualTo(true);
+		assertThat(addedList).isTrue();
 		test.log(LogStatus.PASS, test.addScreenCapture(Paths.get("src/test/resources/screenshots/NewListAdded.png").toFile().getAbsolutePath()));
 		extent.endTest(test);
 		
@@ -101,7 +101,7 @@ public class FrontEndHomePageSeleniumTest {
 
 		boolean deletedList = HP.deleteList();
 		ScreenshotHelper.screenShot(driver, "src/test/resources/screenshots/DeletedList.png");
-		assertThat(deletedList).isEqualTo(true);
+		assertThat(deletedList).isTrue();
 		test.log(LogStatus.PASS, test.addScreenCapture(Paths.get("src/test/resources/screenshots/DeletedList.png").toFile().getAbsolutePath()));
 		extent.endTest(test);
 	}
@@ -112,7 +112,7 @@ public class FrontEndHomePageSeleniumTest {
 
 		boolean modifiedList = HP.modifyList();
 		ScreenshotHelper.screenShot(driver, "src/test/resources/screenshots/ModifyList.png");
-		assertThat(modifiedList).isEqualTo(true);
+		assertThat(modifiedList).isTrue();
 		test.log(LogStatus.PASS, test.addScreenCapture(Paths.get("src/test/resources/screenshots/ModifyList.png").toFile().getAbsolutePath()));
 		extent.endTest(test);
 	}

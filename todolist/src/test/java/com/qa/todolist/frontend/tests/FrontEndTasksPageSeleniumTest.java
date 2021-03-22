@@ -68,7 +68,7 @@ public class FrontEndTasksPageSeleniumTest {
 			test = extent.startTest("Display task test");
 			
 			boolean TasksFound= TP.displayTasks();//wont be returned if theres an error
-			assertThat(TasksFound).isEqualTo(true);
+			assertThat(TasksFound).isTrue();
 			ScreenshotHelper.screenShot(driver, "src/test/resources/screenshots/Tasks.png");
 			
 			test.log(LogStatus.PASS, test.addScreenCapture(Paths.get("src/test/resources/screenshots/Tasks.png").toFile().getAbsolutePath()));
@@ -80,7 +80,7 @@ public class FrontEndTasksPageSeleniumTest {
 			test = extent.startTest("add task test");
 			boolean taskWasAdded = TP.addTask();
 			
-			assertThat(taskWasAdded).isEqualTo(true);
+			assertThat(taskWasAdded).isTrue();
 			ScreenshotHelper.screenShot(driver, "src/test/resources/screenshots/addedTask.png");
 			
 			test.log(LogStatus.PASS, test.addScreenCapture(Paths.get("src/test/resources/screenshots/addedTask.png").toFile().getAbsolutePath()));
@@ -92,7 +92,7 @@ public class FrontEndTasksPageSeleniumTest {
 			test = extent.startTest("modify task test");
 			boolean taskWasChanged = TP.modifyTask();
 			
-			assertThat(taskWasChanged).isEqualTo(true);
+			assertThat(taskWasChanged).isTrue();
 			ScreenshotHelper.screenShot(driver, "src/test/resources/screenshots/changedTask.png");
 			
 			test.log(LogStatus.PASS, test.addScreenCapture(Paths.get("src/test/resources/screenshots/changedTask.png").toFile().getAbsolutePath()));

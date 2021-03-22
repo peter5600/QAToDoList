@@ -97,7 +97,7 @@ public class ListServiceUnitTest {
 		//deletebyid dosent return anything so its not included just mocking the output
 		
 		
-		assertThat(true).isEqualTo(listService.DeleteListById(validList.getId()));
+		assertThat(listService.DeleteListById(validList.getId())).isTrue();
 		
 		verify(listRepo, times(2)).existsById(Mockito.anyInt());
 	}
