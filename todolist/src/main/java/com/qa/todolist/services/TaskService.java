@@ -33,7 +33,7 @@ public class TaskService {
 	public List<TaskDTO> returnAllTasksFromListByID(Integer id){
 		List<Task> tasks = taskRepo.findAllTasksFromListID(id);
 		
-		if(tasks.size() > 0) {
+		if(!tasks.isEmpty()) {
 			return taskMapper.mapToTaskDTOFromList(tasks);
 		}else {
 			//might cause problems if i create a list and then exit since no tasks will
