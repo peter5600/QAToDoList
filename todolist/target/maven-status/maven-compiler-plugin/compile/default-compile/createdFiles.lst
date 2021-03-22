@@ -1,6 +1,7 @@
 com\qa\todolist\services\ListService.class
 com\qa\todolist\mappers\ListMapper.class
 com\qa\todolist\configuration\ApplicationConfiguration.class
+com\qa\todolist\data\model\Lists.class
 com\qa\todolist\data\repository\ListRepository.class
 com\qa\todolist\controller\TaskController.class
 com\qa\todolist\dto\TaskDTO.class
@@ -14,3 +15,4 @@ com\qa\todolist\controller\ListController.class
 com\qa\todolist\mappers\TaskMapper.class
 com\qa\todolist\TodolistApplication.class
 com\qa\todolist\services\TaskService.class
+com\qa\todolist\data\model\Task.class

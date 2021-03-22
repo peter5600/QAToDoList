@@ -1,0 +1,16 @@
+com\qa\todolist\controller\TaskControllerIntegrationTest.class
+com\qa\todolist\service\TaskServiceIntegrationTest.class
+com\qa\todolist\controller\TaskControllerUnitTest.class
+com\qa\todolist\frontend\helper\ScreenshotHelper.class
+com\qa\todolist\frontend\pages\TasksPage.class
+com\qa\todolist\service\TaskServiceUnitTest.class
+com\qa\todolist\models\TaskModelTest.class
+com\qa\todolist\frontend\tests\FrontEndTasksPageSeleniumTest.class
+com\qa\todolist\service\ListServiceUnitTest.class
+com\qa\todolist\frontend\pages\HomePage.class
+com\qa\todolist\controller\ListControllerIntegrationTest.class
+com\qa\todolist\TodolistApplicationTests.class
+com\qa\todolist\frontend\tests\FrontEndHomePageSeleniumTest.class
+com\qa\todolist\models\ListModelTest.class
+com\qa\todolist\service\ListServiceIntegrationTest.class
+com\qa\todolist\controller\ListControllerUnitTest.class
