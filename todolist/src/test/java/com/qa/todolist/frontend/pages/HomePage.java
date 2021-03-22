@@ -60,7 +60,7 @@ public class HomePage {
 	
 	public boolean deleteList() {
 		addList();//there might not be a list to delete
-		List<WebElement> deleteBtns = driver.findElements(By.className("DeleteList"));
+		List<WebElement> deleteBtns = driver.findElements(By.className("ModifyDeleteList"));
 		new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(deleteBtns.get(0)));
 		if(deleteBtns.size() == 0) {
 			return false;
@@ -70,7 +70,11 @@ public class HomePage {
 		System.out.println(deleteBtn);
 		new WebDriverWait(driver, 3).until(ExpectedConditions.elementToBeClickable(deleteBtn));//wait for it to be in view
 		deleteBtn.click();//submit instead of click
-		driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
+		//its been clicked wait for modal 
+		WebElement modalDeleteBtn = driver.findElement(By.id("DeleteListBtn"));
+		new WebDriverWait(driver, 3).until(ExpectedConditions.elementToBeClickable(modalDeleteBtn));//wait for it to be in view
+		modalDeleteBtn.click();
+		
 		return true;//could check that child count has changed
 	}
 	
