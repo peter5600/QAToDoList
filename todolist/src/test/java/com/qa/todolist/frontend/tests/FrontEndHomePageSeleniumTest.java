@@ -1,10 +1,11 @@
 package com.qa.todolist.frontend.tests;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.jupiter.api.AfterAll;
-import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,7 +13,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -61,7 +61,6 @@ public class FrontEndHomePageSeleniumTest {
         cOptions.setCapability("network.cookie.cookieBehavior", 2);
         cOptions.setCapability("profile.block_third_party_cookies", true);
         driver = new ChromeDriver(cOptions);
-        driver.manage().window().setSize(new Dimension(1920, 1080));
         driver.manage().window().maximize();
 	}
 	
