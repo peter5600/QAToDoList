@@ -53,7 +53,7 @@ public class HomePage {
 		//alot of time just in case it takes a while or test pc is slow
 		return true;//if any of these fail it will throw an error and wont reach this line
 	}
-	//passes the first 6 times but once the button is offscreen
+	//passes the first 6 times but once the button is offscreen it fails
 	
 	//this test works as long as there aren't too many on the screen if there are it breaks
 	
