@@ -27,7 +27,7 @@ To use the front end either start the index.html file locally, move to a live pr
 
 ### Running the tests
 To run individual test files you can naviagate to the the test file and right click the code window and then run as -> junit and this will run just those tests or you can right click the project -> coverage as -> junit this will run all of the tests but so far there is no way to run individual tests besides using the @Disabled annotation above tests that you don't want to run
-
+Some of the test require the server to be running so ensure that if you run any tests that dont launch the server themseleves like the front end that you run mvn spring-boot:run in the local terminal
 ## Built with(main technologies)
 Java 11  
 Maven 3.6.3  
