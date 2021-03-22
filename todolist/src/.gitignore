@@ -1,2 +1,2 @@
-main/resources
-test/resources
+main/resources/*
+test/resources/*
