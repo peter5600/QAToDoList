@@ -107,6 +107,17 @@ public class FrontEndHomePageSeleniumTest {
 		extent.endTest(test);
 	}
 	
+	@Test
+	public void modifyListTest() throws Exception{
+		test = extent.startTest("modify list name test");
+
+		boolean modifiedList = HP.modifyList();
+		ScreenshotHelper.screenShot(driver, "src/test/resources/screenshots/ModifyList.png");
+		assertThat(modifiedList).isEqualTo(true);
+		test.log(LogStatus.PASS, test.addScreenCapture(Paths.get("src/test/resources/screenshots/ModifyList.png").toFile().getAbsolutePath()));
+		extent.endTest(test);
+	}
+	
 	@AfterAll //runs once
 	public static void teardown() {
 		driver.quit();
