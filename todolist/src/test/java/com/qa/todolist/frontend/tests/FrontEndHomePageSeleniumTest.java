@@ -62,6 +62,7 @@ public class FrontEndHomePageSeleniumTest {
         cOptions.setCapability("profile.block_third_party_cookies", true);
         driver = new ChromeDriver(cOptions);
         driver.manage().window().setSize(new Dimension(1920, 1080));
+        driver.manage().window().maximize();
 	}
 	
 	@Test
@@ -93,6 +94,17 @@ public class FrontEndHomePageSeleniumTest {
 		test.log(LogStatus.PASS, test.addScreenCapture(Paths.get("src/test/resources/screenshots/NewListAdded.png").toFile().getAbsolutePath()));
 		extent.endTest(test);
 		
+	}
+	
+	@Test
+	public void deleteListTest() throws Exception{
+		test = extent.startTest("delete list test");
+
+		boolean deletedList = HP.deleteList();
+		ScreenshotHelper.screenShot(driver, "src/test/resources/screenshots/DeletedList.png");
+		assertThat(deletedList).isEqualTo(true);
+		test.log(LogStatus.PASS, test.addScreenCapture(Paths.get("src/test/resources/screenshots/DeletedList.png").toFile().getAbsolutePath()));
+		extent.endTest(test);
 	}
 	
 	@AfterAll //runs once
