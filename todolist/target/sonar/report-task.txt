@@ -1,0 +1,6 @@
+projectKey=com.qa.todolist:todolist
+serverUrl=http://localhost:9000
+serverVersion=8.7.1.42226
+dashboardUrl=http://localhost:9000/dashboard?id=com.qa.todolist%3Atodolist
+ceTaskId=AXhYrMNiWj-G7AExlg6q
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXhYrMNiWj-G7AExlg6q

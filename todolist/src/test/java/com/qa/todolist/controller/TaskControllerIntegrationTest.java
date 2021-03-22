@@ -3,7 +3,7 @@ package com.qa.todolist.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.Disabled;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -39,7 +39,7 @@ public class TaskControllerIntegrationTest {
 	@Autowired
 	private ObjectMapper objectMapper;
 	
-	private Task validTask = new Task(1,new Lists(1,"Peters list","19-03-2021 09:58"),"This is my task",false,"19-03-2021 09:58");
+	
 	private TaskDTO validTaskDTO = new TaskDTO(1,"This is my task",false,"19-03-2021 09:58");
 	private List<TaskDTO> listOfDTOs = new ArrayList<TaskDTO>();
 	
