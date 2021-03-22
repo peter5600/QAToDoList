@@ -85,7 +85,7 @@ public class TaskServiceUnitTest {
 		when(taskRepo.findById(Mockito.anyInt())).thenReturn(Optional.of(validTask));
 		when(taskRepo.save(Mockito.any(Task.class))).thenReturn(validTask);
 		
-		assertThat(true).isEqualTo(taskService.completeTask(1));
+		assertThat(taskService.completeTask(1)).isTrue();
 		
 		verify(taskRepo, times(1)).findById(Mockito.anyInt());
 		verify(taskRepo,times(1)).save(Mockito.any(Task.class));
@@ -95,7 +95,7 @@ public class TaskServiceUnitTest {
 	public void deleteTaskTest() {
 		when(taskRepo.existsById(Mockito.anyInt())).thenReturn(true, false);
 		
-		assertThat(true).isEqualTo(taskService.deleteTask(1));
+		assertThat(taskService.deleteTask(1)).isTrue();
 		
 		verify(taskRepo, times(2)).existsById(Mockito.anyInt());
 	}

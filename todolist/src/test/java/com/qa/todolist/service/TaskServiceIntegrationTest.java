@@ -84,7 +84,7 @@ public class TaskServiceIntegrationTest {
 	@Test
 	public void completeTaskTest() {
 		Boolean completed = taskService.completeTask(validTask.getId());
-		assertThat(completed).isEqualTo(true);
+		assertThat(completed).isTrue();
 	}
 	
 	@Test
