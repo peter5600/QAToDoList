@@ -54,10 +54,9 @@ const GetLists = () => {
             TasksBtn.addEventListener("click", function () {
                 DisplayTasks(l.id); //probably a better way to do this but it functions for now
             })
-            let DeleteBtn = InnerListComponent.querySelector(".DeleteList");
+            let DeleteBtn = InnerListComponent.querySelector(".ModifyDeleteList");
             DeleteBtn.addEventListener("click", function () {
-                console.log("Hello")
-                DeleteList(l.id)
+                ModifyDeleteList(l.id)//this will open the modal
             })
 
             document.querySelector("#Lists").appendChild(InnerListComponent);
@@ -68,12 +67,18 @@ const GetLists = () => {
     })
 }
 
+const ModifyDeleteList = (id) => {
+    document.querySelector("#ModifyDeleteModal").querySelector("#CurrentListID").value = id;
+}
+
 
 const DisplayTasks = (id) => {
     document.location.href = "./tasks.html?TaskID=" + id;//change page on a local instillation on a production server this would be diffrent
 }
 
-const DeleteList = (id) => {
+
+const DeleteList = () => {
+    let id = document.querySelector("#ModifyDeleteModal").querySelector("#CurrentListID").value;
     fetch("http://localhost:8080/list/" + id,{
         method: "DELETE",
         headers: {
@@ -87,6 +92,30 @@ const DeleteList = (id) => {
         }
     }).catch((err) => {
         alert("There was an error when the list was being deleted " + err);
+    })
+}
+
+const ModifyForm = (event) => {
+    event.preventDefault();
+    let id = document.querySelector("#ModifyDeleteModal").querySelector("#CurrentListID").value;
+    let newListName = document.querySelector("#ModifyDeleteModal").querySelector("#NewListName").value;
+    fetch("http://localhost:8080/list/"+id,{
+        method: "PATCH",
+        headers:{
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+            "listName" :newListName
+        })
+    }).then((response) => {
+        if(response.status === 200){
+            location.reload();
+        }else{
+            throw "Couldn't modify list error"
+        }
+    }).then((data) => {
+    }).catch((error) => {
+
     })
 }
 
@@ -126,7 +155,7 @@ const DeleteList = (id) => {
                 <button class="btn btn-primary btn-lg ViewTasks">View tasks</button>
             </div>
             <div class="col-6">
-                <button class="btn btn-danger btn-lg DeleteList">Delete List</button>
+                <button class="btn btn-danger btn-lg ModifyDeleteList" data-bs-toggle='modal' data-bs-target='#ModifyDeleteModal'>Modify/Delete List</button>
             </div>
         </div>
     </div>

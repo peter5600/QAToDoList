@@ -15,7 +15,7 @@
 
     body,
     wrapper {
-        min-height: 100vh;
+        min-height: 100vh; 
     }
 
     .customBg {
@@ -124,6 +124,33 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary" id="CreateListBtn">Create List</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!--Modify modal-->
+    <div class="modal" tabindex="-1" id="ModifyDeleteModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add new list</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="ModifyForm" onsubmit="ModifyForm(event)">
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">List name</label>
+                            <input type="text" class="form-control" id="NewListName" name="ListName" required>
+                            <!--Because its in a form i can use the required attribute for basic validation-->
+                        </div>
+                        <input type="hidden" id="CurrentListID"/>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="DeleteList()" id="DeleteListBtn">Delete List</button>
+                        <button type="submit" class="btn btn-primary" id="ModifyListBtn">Modify List</button>
                     </div>
                 </form>
             </div>

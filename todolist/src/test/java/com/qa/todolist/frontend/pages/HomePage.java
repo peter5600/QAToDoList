@@ -32,6 +32,7 @@ public class HomePage {
 	private WebElement addListModal;
 	
 	public int GetLists() {
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.id("Lists")));
 		WebElement ListsBox = driver.findElement(By.id("Lists"));
 		int ChildCount = ListsBox.findElements(By.xpath("./child::*")).size();
 		return ChildCount;
@@ -53,14 +54,14 @@ public class HomePage {
 		//alot of time just in case it takes a while or test pc is slow
 		return true;//if any of these fail it will throw an error and wont reach this line
 	}
-	//passes the first 6 times but once the button is offscreen
+	//passes the first 6 times but once the button is offscreen it fails
 	
 	//this test works as long as there aren't too many on the screen if there are it breaks
 	
 	
 	public boolean deleteList() {
 		addList();//there might not be a list to delete
-		List<WebElement> deleteBtns = driver.findElements(By.className("DeleteList"));
+		List<WebElement> deleteBtns = driver.findElements(By.className("ModifyDeleteList"));
 		new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(deleteBtns.get(0)));
 		if(deleteBtns.size() == 0) {
 			return false;
@@ -70,9 +71,38 @@ public class HomePage {
 		System.out.println(deleteBtn);
 		new WebDriverWait(driver, 3).until(ExpectedConditions.elementToBeClickable(deleteBtn));//wait for it to be in view
 		deleteBtn.click();//submit instead of click
-		driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
+		//its been clicked wait for modal 
+		WebElement modalDeleteBtn = driver.findElement(By.id("DeleteListBtn"));
+		new WebDriverWait(driver, 3).until(ExpectedConditions.elementToBeClickable(modalDeleteBtn));//wait for it to be in view
+		modalDeleteBtn.click();
+		
 		return true;//could check that child count has changed
 	}
+	
+	public boolean modifyList() {
+		addList();//there might not be a list to delete
+		List<WebElement> modifyBtns = driver.findElements(By.className("ModifyDeleteList"));
+		new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(modifyBtns.get(0)));
+		if(modifyBtns.size() == 0) {
+			return false;
+		}
+		
+		WebElement modifyBtn = modifyBtns.get(0);
+		new WebDriverWait(driver, 3).until(ExpectedConditions.elementToBeClickable(modifyBtn));//wait for it to be in view
+		modifyBtn.click();//submit instead of click
+		//its been clicked wait for modal 
+		WebElement modalModifyBtn = driver.findElement(By.id("ModifyListBtn"));
+		new WebDriverWait(driver, 3).until(ExpectedConditions.elementToBeClickable(modalModifyBtn));//wait for it to be in view
+		WebElement modalModifyInput = driver.findElement(By.id("NewListName"));
+		modalModifyInput.sendKeys("The new name for the modal");
+		modalModifyBtn.click();
+		new WebDriverWait(driver, 10).until(
+			      webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
+		
+		return true;//could check that child count has changed
+	}
+	
+	
 	
 	
 }

@@ -26,6 +26,7 @@ public class TasksPage {
 	
 	public boolean displayTasks() {
 		hp.addList();//need a list there
+		new WebDriverWait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(By.className("ViewTasks"))); 
 		viewTasksBtns = driver.findElements(By.className("ViewTasks"));
 		WebElement viewTaskBtn = viewTasksBtns.get(0);
 		new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(viewTaskBtn)); 
