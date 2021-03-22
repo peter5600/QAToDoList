@@ -1,0 +1,25 @@
+* {
+    --bg-colour: #e2dede;
+}
+
+#TasksBox{
+    width:600px;
+    height:800px;
+    
+    margin-left: auto;
+    margin-right:auto;
+}
+
+#InnerTasksBox{
+    border: 1px solid black;
+    background-color: var(--bg-colour);
+    height: inherit;
+    width: inherit;
+    overflow-y: auto;
+}
+
+.Task{
+    background-color: white;
+    margin:10px;
+    border-radius: 12px;
+}

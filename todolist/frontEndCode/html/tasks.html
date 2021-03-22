@@ -24,7 +24,7 @@
 <body>
 
 
-    <wrapper class="d-flex flex-column">
+    <wrapper class="d-flex flex-column min-vh-100">
         <nav class="navbar navbar-expand-lg navbar-light customBg">
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.html">Todo Project</a>
@@ -41,9 +41,44 @@
                 </div>
             </div>
         </nav>
-        <main class="flex-fill">
-            <div class="container-fluid">
+        <main class="flex-fill d-flex align-items-center">
+            <div class="container-fluid text-center">
+                <div id="TasksBox" style="position: relative;">
+                    <button class="btn btn-primary btn-lg" style="position: absolute; right:0;top:-55px;" data-bs-toggle="modal" data-bs-target="#AddTaskModal">Add new
+                        task</button>
+                    <!--Hacky way to displace the button but it works-->
+                    <div id="InnerTasksBox">
+                        
+                        
+                    </div>
+                </div>
+            </div>
 
+            <!--Modals-->
+            <div class="modal" tabindex="-1" id="AddTaskModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Add new list</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form id="ListCreateForm" onsubmit="AddTask(event)">
+                            <div class="modal-body">
+        
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">What is the task</label>
+                                    <textarea id="Task"  rows="10" class="form-control" required></textarea>
+                                    <!--Because its in a form i can use the required attribute for basic validation-->
+                                </div>
+        
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary" id="CreateTaskBtn">Create Task</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
             <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
                 integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi"
