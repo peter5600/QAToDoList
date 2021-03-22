@@ -26,7 +26,7 @@ const getTasks = (id) => {
                         <p class='TaskText'></p>
                     </div>
                     <div class="row mx-auto text-center">
-                        <button class="col-4 btn btn-primary mx-auto ModifyBtn">Modify</button>
+                        <button class="col-4 btn btn-primary mx-auto ModifyBtn" data-bs-toggle='modal' data-bs-target='#ModifyTaskModal'>Modify</button>
                         <button class="col-4 btn btn-danger mx-auto DeleteBtn">Delete</button>
                     </div>
                 </div>`
@@ -49,11 +49,38 @@ const getTasks = (id) => {
 }
 
 const ModifyTask = (id) => {
-
+    document.querySelector("#ModifyTaskModal").querySelector("#ModifyTaskID").value = id;
 }
 
 const DeleteTask = (id) => {
 
+}
+
+const ModifyTaskFormEvent = (event) =>{
+    event.preventDefault();
+    let newTask = document.querySelector("#ModifyTaskModal").querySelector("#NewTask").value
+    let taskID = document.querySelector("#ModifyTaskModal").querySelector("#ModifyTaskID").value;
+    fetch("http://localhost:8080/task/"+taskID, {
+        method: "PATCH",
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+            "task" : newTask,
+            "taskCompleted" : false,//RESET TO FALSE BECAUSE IF YOUR CHANGING THE TASK THEN ITS NOT DONE YET
+            "list" : {
+                "id" : ListID
+            }
+        })
+    }).then((response) => {
+        if(response.status == 200){
+            location.reload()
+        }else{
+            throw "Couldn't modify task error"
+        }
+    }).catch((err) => {
+        alert("There was an issue modifying the task" + err)
+    })
 }
 
 
