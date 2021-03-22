@@ -38,8 +38,8 @@ public class TaskController {
 	//view tasks
 	@GetMapping("/{id}")//list id
 	public ResponseEntity<List<TaskDTO>> getTaskByListID(@PathVariable("id") Integer id){
-		List<TaskDTO> TasksFromList = taskService.returnAllTasksFromListByID(id);
-		return new ResponseEntity<List<TaskDTO>>(TasksFromList, HttpStatus.OK);
+		List<TaskDTO> tasksFromList = taskService.returnAllTasksFromListByID(id);
+		return new ResponseEntity<List<TaskDTO>>(tasksFromList, HttpStatus.OK);
 		
 	}
 	

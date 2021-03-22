@@ -17,9 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.qa.todolist.data.model.Lists;	
+import com.qa.todolist.data.model.Lists;
 import com.qa.todolist.dto.ListDTO;
-import com.qa.todolist.dto.TaskDTO;
 import com.qa.todolist.services.ListService;
 
 

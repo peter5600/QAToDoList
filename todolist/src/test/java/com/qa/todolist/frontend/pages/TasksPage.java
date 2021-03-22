@@ -20,7 +20,6 @@ public class TasksPage {
 	
 	private List<WebElement> viewTasksBtns;
 	
-	private WebElement addTaskBtn;
 	
 	private HomePage hp;
 	
