@@ -99,6 +99,18 @@ public class FrontEndTasksPageSeleniumTest {
 			extent.endTest(test);
 		}
 		
+		@Test
+		public void deleteTaskTest() throws Exception{
+			test = extent.startTest("delete task test");
+			boolean taskWasDeleted = TP.deleteTask();
+			assertThat(taskWasDeleted).isEqualTo(true);
+			
+			ScreenshotHelper.screenShot(driver, "src/test/resources/screenshots/deletedTask.png");
+			
+			test.log(LogStatus.PASS, test.addScreenCapture(Paths.get("src/test/resources/screenshots/deletedTask.png").toFile().getAbsolutePath()));
+			extent.endTest(test);
+		}
+		
 		@AfterAll //runs once
 		public static void teardown() {
 			driver.quit();

@@ -53,7 +53,17 @@ const ModifyTask = (id) => {
 }
 
 const DeleteTask = (id) => {
-
+    fetch("http://localhost:8080/task/"+id, {
+        method: "DELETE"
+    }).then((response) => {
+        if(response.status == 200){
+            location.reload();
+        }else{
+            throw "Task couldn't be deleted"
+        }
+    }).catch((err) => {
+        alert('There was an error when the task was being deleted' + err)
+    })
 }
 
 const ModifyTaskFormEvent = (event) =>{
