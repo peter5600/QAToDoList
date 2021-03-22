@@ -32,6 +32,7 @@ public class HomePage {
 	private WebElement addListModal;
 	
 	public int GetLists() {
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.id("Lists")));
 		WebElement ListsBox = driver.findElement(By.id("Lists"));
 		int ChildCount = ListsBox.findElements(By.xpath("./child::*")).size();
 		return ChildCount;
@@ -77,6 +78,31 @@ public class HomePage {
 		
 		return true;//could check that child count has changed
 	}
+	
+	public boolean modifyList() {
+		addList();//there might not be a list to delete
+		List<WebElement> modifyBtns = driver.findElements(By.className("ModifyDeleteList"));
+		new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(modifyBtns.get(0)));
+		if(modifyBtns.size() == 0) {
+			return false;
+		}
+		
+		WebElement modifyBtn = modifyBtns.get(0);
+		new WebDriverWait(driver, 3).until(ExpectedConditions.elementToBeClickable(modifyBtn));//wait for it to be in view
+		modifyBtn.click();//submit instead of click
+		//its been clicked wait for modal 
+		WebElement modalModifyBtn = driver.findElement(By.id("ModifyListBtn"));
+		new WebDriverWait(driver, 3).until(ExpectedConditions.elementToBeClickable(modalModifyBtn));//wait for it to be in view
+		WebElement modalModifyInput = driver.findElement(By.id("NewListName"));
+		modalModifyInput.sendKeys("The new name for the modal");
+		modalModifyBtn.click();
+		new WebDriverWait(driver, 10).until(
+			      webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
+		
+		return true;//could check that child count has changed
+	}
+	
+	
 	
 	
 }
