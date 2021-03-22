@@ -70,7 +70,7 @@ const GetLists = () => {
 
 
 const DisplayTasks = (id) => {
-
+    document.location.href = "./tasks.html?TaskID=" + id;//change page on a local instillation on a production server this would be diffrent
 }
 
 const DeleteList = (id) => {

@@ -21,7 +21,9 @@ public class ControllerAdviceExceptionsHandlers {
 	 */
 	@ExceptionHandler(value = ListsTasksNotFound.class)
 	public ResponseEntity<String> ListsTasksNotFound(ListsTasksNotFound ltnf){
-		return new ResponseEntity<String>(ltnf.getMessage(), HttpStatus.NOT_FOUND);
+		return new ResponseEntity<String>(ltnf.getMessage(), HttpStatus.NO_CONTENT);//this is no content i just wanted to know because 
+		//if no tasks are found its unusal behaviour but its acceptable since it could be a new list
+		//its not ok because 
 	}
 	
 	@ExceptionHandler(value = ListNotFoundException.class)
