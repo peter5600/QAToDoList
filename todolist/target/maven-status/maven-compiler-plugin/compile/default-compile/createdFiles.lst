@@ -1,0 +1,16 @@
+com\qa\todolist\services\ListService.class
+com\qa\todolist\mappers\ListMapper.class
+com\qa\todolist\configuration\ApplicationConfiguration.class
+com\qa\todolist\data\repository\ListRepository.class
+com\qa\todolist\controller\TaskController.class
+com\qa\todolist\dto\TaskDTO.class
+com\qa\todolist\exceptions\TaskNotFoundException.class
+com\qa\todolist\exceptions\ListNotFoundException.class
+com\qa\todolist\data\repository\TaskRepository.class
+com\qa\todolist\dto\ListDTO.class
+com\qa\todolist\exceptions\ControllerAdviceExceptionsHandlers.class
+com\qa\todolist\exceptions\ListsTasksNotFound.class
+com\qa\todolist\controller\ListController.class
+com\qa\todolist\mappers\TaskMapper.class
+com\qa\todolist\TodolistApplication.class
+com\qa\todolist\services\TaskService.class
