@@ -29,16 +29,16 @@ To use the front end either start the index.html file locally, move to a live pr
 To run individual test files you can naviagate to the the test file and right click the code window and then run as -> junit and this will run just those tests or you can right click the project -> coverage as -> junit this will run all of the tests but so far there is no way to run individual tests besides using the @Disabled annotation above tests that you don't want to run
 
 ## Built with(main technologies)
-Java 11
-Maven 3.6.3
-Spring Boot 4
-JUnit 5
-SonarQube 8.7.1.42226
-Selenium Google Chrome
-Mockito
-swagger
-MySql
-H2
+Java 11  
+Maven 3.6.3  
+Spring Boot 4  
+JUnit 5  
+SonarQube 8.7.1.42226  
+Selenium Google Chrome  
+Mockito  
+swagger  
+MySql  
+H2  
 
 
 
