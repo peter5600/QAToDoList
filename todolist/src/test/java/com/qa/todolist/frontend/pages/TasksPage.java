@@ -75,4 +75,16 @@ public class TasksPage {
 		
 		return true;
 	}
+
+	public boolean deleteTask() {
+		this.addTask();//add a new task then modify it
+		new WebDriverWait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(By.className("DeleteBtn"))); //dont need all of them as long as 
+		//one has loaded then should be fine since im selecting the first anyways
+		WebElement deleteTaskBtn = driver.findElement(By.className("DeleteBtn"));
+		deleteTaskBtn.click();//click and wait for page to refresh
+		new WebDriverWait(driver, 10).until(
+			      webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
+		
+		return true;
+	}
 }
